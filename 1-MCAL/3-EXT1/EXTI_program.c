@@ -204,20 +204,39 @@ uint8 EXTI_uint8Int2SetSenseControl(uint8 Copy_uint8Sense )
 	return Local_uint8ErrorState ;
 }
 
-uint8 EXTI_uint8IntEnable(uint8 Copy_uint8Int )
+uint8 EXTI_uint8Disable(uint8 Copy_IntID)
 {
 	uint8 Local_uint8ErrorState = OK ;
 
+	/*Check the user pass the correct Value*/
+	if( (Copy_IntID == INT0) ||(Copy_IntID == INT0)||(Copy_IntID ==INT0))
+	{
+		/*Clear the required bit*/
+		CLR_BIT(GICR,Copy_IntID);
+	}else
+	{
+		Local_uint8ErrorState = NOK;
+	}
+
 
 	return Local_uint8ErrorState ;
-
 }
-uint8 EXTI_uint8IntDisable(uint8 Copy_uint8Int )
+uint8 EXTI_uint8IntEnable(uint8 Copy_IntID )
 {
 	uint8 Local_uint8ErrorState = OK ;
 
+		/*Check the user pass the correct Value*/
+		if( (Copy_IntID == INT0) ||(Copy_IntID == INT0)||(Copy_IntID ==INT0))
+		{
+			/*Clear the required bit*/
+			SET_BIT(GICR,Copy_IntID);
+		}else
+		{
+			Local_uint8ErrorState = NOK;
+		}
 
-	return Local_uint8ErrorState ;
+
+		return Local_uint8ErrorState ;
 }
 
 uint8 EXTI_uint8Int0SetCallBack(void(*Copy_pvInt0Func)(void))

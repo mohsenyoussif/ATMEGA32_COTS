@@ -17,6 +17,12 @@
 #define  EXTI_FALLING_EDGE_SENCE_CONTROL         3    /*FAILING EDGE SENSE CONTROL */
 #define  EXTI_RISING_EDGE_SENCE_CONTROL          4    /*RISING EDGE SENSE CONTROL */
 
+/*Define Available Interrupt IDs
+ * Hint : I used the values of bits for INTx in the interrupt control Register to clear them in the Disable Function  */
+#define INT0     6
+#define INT1     7
+#define INT2     5
+
 /*Input     : None
  Output     : None
  Desciption :A function to Initiate  INT0 by SET The sense and Enable peripheral interrupt enable  */
@@ -49,11 +55,21 @@ uint8 EXTI_uint8Int1SetSenseControl(uint8 Copy_uint8Sense );
 uint8 EXTI_uint8Int2SetSenseControl(uint8 Copy_uint8Sense );
 
  
- /*pass which interrupt(int0 , int1 , int2) To enable */
-uint8 EXTI_uint8IntEnable(uint8 Copy_uint8Int );
+ /*pass which interrupt(int0 , int1 , int2) To Disable
+ * Note : You should pass:-
+ *      6 for INT0
+ *      7 for INT1
+ *      5 for INT2
+ */
+uint8 EXTI_uint8IntEnable(uint8 Copy_IntID );
 
-/*pass which interrupt(int0 , int1 , int2) To enable */
-uint8 EXTI_uint8IntDisable(uint8 Copy_uint8Int );
+/*pass which interrupt(int0 , int1 , int2) To Disable
+ * Note : You should pass:-
+ *      6 for INT0
+ *      7 for INT1
+ *      5 for INT2
+ */
+uint8 EXTI_uint8Disable(uint8 Copy_IntID);
  
 //=======================================================================
 
